@@ -101,14 +101,25 @@ BEHAVIOR GUIDELINES:
 - For code questions, always include working code examples.
 - Be concise but complete."""
 
-def build_prompt(history_summary: str, user_message: str) -> str:
-    """Build the full prompt with personality + history + current message, wrapped in [[ ]]."""
+def build_prompt(history_summary: str, user_message: str, recent_messages: list = None) -> str:
+    """Build the full prompt with personality + long-term summary + recent history + current message."""
     parts = [SYSTEM_PERSONALITY]
     
+    # Long-term memory: summary of earlier exchanges (generated every 6 messages)
     if history_summary and history_summary.strip():
-        parts.append(f"\n\n[CONVERSATION CONTEXT - previous messages summary]:\n{history_summary}")
+        parts.append(f"\n\n[CONVERSATION SUMMARY - earlier exchanges]:\n{history_summary}")
     
-    # User message wrapped in [[ ]] - invisible signal to model
+    # Short-term memory: the most recent back-and-forth (passed directly from client)
+    if recent_messages:
+        lines = []
+        for m in recent_messages:
+            role_label = "User" if m.get("role") == "user" else "Smarterz AI"
+            content = (m.get("content") or "").strip()
+            if content:
+                lines.append(f"{role_label}: {content}")
+        if lines:
+            parts.append(f"\n\n[RECENT CONVERSATION]:\n" + "\n".join(lines))
+    
     parts.append(f"\n\n[[USER MESSAGE]]: {user_message} [[/USER MESSAGE]]")
     parts.append("\n\nRespond as Smarterz AI:")
     
@@ -302,11 +313,17 @@ def chat():
         data = request.get_json(force=True)
         user_message = (data.get("message") or "").strip()
         history_summary = (data.get("history_summary") or "").strip()
+        recent_messages = data.get("recent_messages") or []
+        # Cap recent messages at 8 to avoid overly long prompts
+        if isinstance(recent_messages, list):
+            recent_messages = recent_messages[-8:]
+        else:
+            recent_messages = []
         
         if not user_message:
             return jsonify({"error": "Empty message"}), 400
         
-        prompt = build_prompt(history_summary, user_message)
+        prompt = build_prompt(history_summary, user_message, recent_messages)
         
         try:
             response_text = gemini_generate(prompt)
