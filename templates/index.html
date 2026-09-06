@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Smarterz AI</title>
+<link rel="icon" href="/favicon.png" type="image/png">
 <meta name="description" content="Smarterz AI — Your intelligent AI assistant" />
 <meta name="theme-color" content="#0f0f13" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,6 +47,23 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 html, body { height: 100%; font-family: var(--font); background: var(--bg-base); color: var(--text-primary); overflow: hidden; }
+
+/* ── Brand icon (favicon with emoji fallback) ───────────────── */
+.logo-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.badge-img {
+  width: 13px; height: 13px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.avatar-img {
+  width: 18px; height: 18px;
+  object-fit: contain;
+  display: block;
+}
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 input, textarea { font-family: inherit; }
 a { color: var(--accent-2); text-decoration: none; }
@@ -220,6 +238,9 @@ a:hover { text-decoration: underline; }
   border: 1px solid rgba(108,99,255,.3);
   color: var(--accent-2);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* ── Chat Window ───────────────────────────────────────────── */
@@ -450,7 +471,7 @@ a:hover { text-decoration: underline; }
 }
 #input-wrap {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 8px;
   background: var(--bg-input);
   border: 1px solid var(--border-light);
@@ -475,8 +496,9 @@ a:hover { text-decoration: underline; }
   resize: none;
   max-height: 180px;
   min-height: 24px;
-  padding: 4px 0;
+  padding: 2px 0;
   overflow-y: auto;
+  align-self: center;
 }
 #msg-input::placeholder { color: var(--text-muted); }
 #send-btn {
@@ -640,7 +662,7 @@ a:hover { text-decoration: underline; }
   <!-- ── Sidebar ──────────────────────────────────────────── -->
   <div id="sidebar">
     <div id="sidebar-logo">
-      <div class="logo-icon">⚡</div>
+      <div class="logo-icon"><img src="/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
       <div class="logo-text">Smarterz <span>AI</span></div>
     </div>
     <button id="new-chat-btn" onclick="newChat()">
@@ -651,7 +673,7 @@ a:hover { text-decoration: underline; }
     <div id="chat-list"></div>
     <div id="sidebar-footer">
       <button id="info-btn" onclick="openInfo()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/></svg>
         About Smarterz AI
       </button>
     </div>
@@ -667,12 +689,12 @@ a:hover { text-decoration: underline; }
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <span id="chat-title-header">New Chat</span>
-      <div class="header-badge">⚡ Smarterz AI</div>
+      <div class="header-badge"><img src="/favicon.png" class="badge-img" alt="⚡" onerror="this.onerror=null;this.outerHTML='<span>⚡<\/span>'"> Smarterz AI</div>
     </div>
 
     <div id="chat-window">
       <div id="welcome">
-        <div class="welcome-logo">⚡</div>
+        <div class="welcome-logo"><img src="/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
         <h1 class="welcome-title">Hello, I'm <span>Smarterz AI</span></h1>
         <p class="welcome-sub">Your intelligent AI assistant. Ask me anything — I'm here to help you think smarter.</p>
         <div class="starters">
@@ -731,34 +753,34 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="info-section">
-      <h3>🗂️ Local Chat Storage</h3>
+      <h3>Local Chat Storage</h3>
       <p>All your chat history is saved <strong>only in your browser's local storage (IndexedDB)</strong>, on your device. Clearing your browser data will erase your history. We never touch it.</p>
     </div>
 
     <div class="info-section">
-      <h3>🤖 About the AI</h3>
+      <h3>About the AI</h3>
       <p>Smarterz AI is an intelligent assistant built with proprietary technology. It can help you with coding, writing, analysis, Q&A, math, creative tasks, and much more.</p>
     </div>
 
     <div class="info-section">
-      <h3>⚡ Capabilities</h3>
+      <h3>Capabilities</h3>
       <p>Markdown rendering · Code highlighting · Chat history (local) · Context-aware multi-turn conversations · Fast responses</p>
     </div>
 
     <div class="info-section">
-      <h3>👨‍💻 Developer</h3>
+      <h3>Developer</h3>
       <div class="dev-info">
         <div class="dev-avatar">S</div>
         <div>
           <div class="dev-name">Smarterz</div>
-          <div class="dev-role">Creator & Developer</div>
+          <div class="dev-role">Creator &amp; Developer</div>
         </div>
       </div>
     </div>
 
     <div class="info-section">
-      <h3>📋 Version</h3>
-      <p style="color:var(--text-muted);font-size:12px;">Smarterz AI v1.0 · Built with ❤️</p>
+      <h3>Version</h3>
+      <p style="color:var(--text-muted);font-size:12px;">Smarterz AI v1.0 · Built with care</p>
     </div>
   </div>
 </div>
@@ -954,7 +976,7 @@ function showWelcome() {
   const cw = document.getElementById('chat-window');
   cw.innerHTML = `
     <div id="welcome">
-      <div class="welcome-logo">⚡</div>
+      <div class="welcome-logo"><img src="/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
       <h1 class="welcome-title">Hello, I'm <span>Smarterz AI</span></h1>
       <p class="welcome-sub">Your intelligent AI assistant. Ask me anything — I'm here to help you think smarter.</p>
       <div class="starters">
@@ -1027,7 +1049,16 @@ function appendMessage(role, content, ts, scroll = true) {
 
   const avatar = document.createElement('div');
   avatar.className = `avatar ${role}`;
-  avatar.textContent = role === 'ai' ? '⚡' : 'U';
+  if (role === 'ai') {
+    const aImg = document.createElement('img');
+    aImg.src = '/favicon.png';
+    aImg.alt = '⚡';
+    aImg.className = 'avatar-img';
+    aImg.onerror = function() { this.style.display='none'; avatar.textContent = '⚡'; };
+    avatar.appendChild(aImg);
+  } else {
+    avatar.textContent = 'U';
+  }
 
   const bubble = document.createElement('div');
   bubble.className = `bubble ${role}`;
@@ -1066,7 +1097,12 @@ function showTyping() {
   row.className = 'message-row ai';
   const avatar = document.createElement('div');
   avatar.className = 'avatar ai';
-  avatar.textContent = '⚡';
+  const tImg = document.createElement('img');
+  tImg.src = '/favicon.png';
+  tImg.alt = '⚡';
+  tImg.className = 'avatar-img';
+  tImg.onerror = function() { this.style.display='none'; avatar.textContent = '⚡'; };
+  avatar.appendChild(tImg);
   const bubble = document.createElement('div');
   bubble.className = 'bubble ai typing-bubble';
   bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
@@ -1116,10 +1152,20 @@ async function sendMessage() {
   showTyping();
 
   try {
+    // Pass the last 8 messages (before current) as immediate context
+    const contextMsgs = currentMessages.slice(0, -1).slice(-8).map(m => ({
+      role: m.role,
+      content: m.content.slice(0, 600)
+    }));
+
     const resp = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, history_summary: currentSummary })
+      body: JSON.stringify({
+        message: text,
+        history_summary: currentSummary,
+        recent_messages: contextMsgs
+      })
     });
 
     const data = await resp.json();
@@ -1143,8 +1189,8 @@ async function sendMessage() {
       fetchTitle(text, data.response);
     }
 
-    // Summarize every 10 messages
-    if (currentMessages.length > 0 && currentMessages.length % 10 === 0) {
+    // Summarize every 6 messages for better long-term memory
+    if (currentMessages.length > 0 && currentMessages.length % 6 === 0) {
       fetchSummary();
     }
 
