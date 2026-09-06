@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: smarterz-ai
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 300 --keep-alive 5
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: REQUEST_TIMEOUT
+        value: "180"
+      - key: RETRY_ATTEMPTS
+        value: "3"
+      - key: RETRY_DELAY
+        value: "2"
+      # Optional: add proxy list for rate limit fallback
+      # - key: PROXY_LIST
+      #   value: "http://proxy1:port,http://proxy2:port"
