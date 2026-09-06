@@ -1,6 +1,6 @@
 # Smarterz AI
 
-A sleek, ChatGPT-inspired AI chat interface powered by Google Gemini (via gemini-web2api), deployable on Render for free.
+A sleek AI chat interface powered by Google Gemini Reverse Engineered (No need of API key or Authorization Cookies), deployable on Render for free.
 
 ## Features
 
@@ -11,7 +11,6 @@ A sleek, ChatGPT-inspired AI chat interface powered by Google Gemini (via gemini
 - 🏷️ AI-generated chat titles
 - 🔁 Auto proxy rotation on rate limits
 - 🔒 No server-side storage of any conversations
-- 🎭 Custom AI persona: "Smarterz AI"
 
 ## Deploy to Render (Free)
 
@@ -24,7 +23,6 @@ A sleek, ChatGPT-inspired AI chat interface powered by Google Gemini (via gemini
    - **Python version:** 3.11
 5. Click **Deploy**
 
-That's it! No environment variables required for basic operation.
 
 ## Optional Environment Variables
 
@@ -34,7 +32,6 @@ That's it! No environment variables required for basic operation.
 | `RETRY_ATTEMPTS` | `3` | How many times to retry on error |
 | `RETRY_DELAY` | `2` | Seconds between retries |
 | `PROXY_LIST` | *(empty)* | Comma-separated proxy URLs for rate limit fallback. Example: `http://proxy1:8080,http://proxy2:8080` |
-| `GEMINI_BL` | auto | Gemini build label (auto-detected if wrong) |
 
 ## Proxy Rotation
 
