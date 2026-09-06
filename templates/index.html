@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Smarterz AI</title>
-<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="icon" href="/static/favicon.png" type="image/png">
 <meta name="description" content="Smarterz AI — Your intelligent AI assistant" />
 <meta name="theme-color" content="#0f0f13" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -663,7 +663,7 @@ a:hover { text-decoration: underline; }
   <!-- ── Sidebar ──────────────────────────────────────────── -->
   <div id="sidebar">
     <div id="sidebar-logo">
-      <div class="logo-icon"><img src="/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
+      <div class="logo-icon"><img src="/static/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
       <div class="logo-text">Smarterz <span>AI</span></div>
     </div>
     <button id="new-chat-btn" onclick="newChat()">
@@ -690,12 +690,12 @@ a:hover { text-decoration: underline; }
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <span id="chat-title-header">New Chat</span>
-      <div class="header-badge"><img src="/favicon.png" class="badge-img" alt="⚡" onerror="this.onerror=null;this.outerHTML='<span>⚡<\/span>'"> Smarterz AI</div>
+      <div class="header-badge"><img src="/static/favicon.png" class="badge-img" alt="⚡" onerror="this.onerror=null;this.outerHTML='<span>⚡<\/span>'"> Smarterz AI</div>
     </div>
 
     <div id="chat-window">
       <div id="welcome">
-        <div class="welcome-logo"><img src="/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
+        <div class="welcome-logo"><img src="/static/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
         <h1 class="welcome-title">Hello, I'm <span>Smarterz AI</span></h1>
         <p class="welcome-sub">Your intelligent AI assistant. Ask me anything — I'm here to help you think smarter.</p>
         <div class="starters">
@@ -769,7 +769,7 @@ a:hover { text-decoration: underline; }
       <h3>Developer</h3>
       <div class="dev-info">
         <div class="dev-avatar">
-          <img src="/developer.png" alt="S" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','S')">
+          <img src="/static/developer.png" alt="S" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','S')">
         </div>
         <div>
           <div class="dev-name">Smarterz</div>
@@ -976,7 +976,7 @@ function showWelcome() {
   const cw = document.getElementById('chat-window');
   cw.innerHTML = `
     <div id="welcome">
-      <div class="welcome-logo"><img src="/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
+      <div class="welcome-logo"><img src="/static/favicon.png" class="logo-img" alt="⚡" onerror="this.onerror=null;this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚡')"></div>
       <h1 class="welcome-title">Hello, I'm <span>Smarterz AI</span></h1>
       <p class="welcome-sub">Your intelligent AI assistant. Ask me anything — I'm here to help you think smarter.</p>
       <div class="starters">
@@ -1051,7 +1051,7 @@ function appendMessage(role, content, ts, scroll = true) {
   avatar.className = `avatar ${role}`;
   if (role === 'ai') {
     const aImg = document.createElement('img');
-    aImg.src = '/favicon.png';
+    aImg.src = '/static/favicon.png';
     aImg.alt = '⚡';
     aImg.className = 'avatar-img';
     aImg.onerror = function() { this.style.display='none'; avatar.textContent = '⚡'; };
@@ -1098,7 +1098,7 @@ function showTyping() {
   const avatar = document.createElement('div');
   avatar.className = 'avatar ai';
   const tImg = document.createElement('img');
-  tImg.src = '/favicon.png';
+  tImg.src = '/static/favicon.png';
   tImg.alt = '⚡';
   tImg.className = 'avatar-img';
   tImg.onerror = function() { this.style.display='none'; avatar.textContent = '⚡'; };
